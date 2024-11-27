@@ -35,47 +35,68 @@ La configuration est idéale pour les développeurs web souhaitant travailler ra
 1. **Assurez-vous que Docker Desktop est lancé** et prêt à exécuter les conteneurs.
 2. Ouvrez le projet dans VS Code ou un terminal.
 3. Exécutez la commande suivante pour construire les images Docker :
-   ```bash
-   docker-compose build
-Lancez les conteneurs avec la commande :
-docker-compose up
-Une fois les conteneurs démarrés :
-Accédez au serveur PHP sur http://localhost:8000.
-Accédez à phpMyAdmin sur http://localhost:8081.
-Configuration des Conteneurs
-Conteneur PHP
-Image : php:8.3-apache
-Port exposé : 8000
-Dossier synchronisé : ./php vers /var/www/html dans le conteneur.
-Modules installés : mysqli, pdo, pdo_mysql.
-Conteneur MySQL
-Image : mysql:8.4.3
-Port exposé : 3307
-Variables d'environnement :
-MYSQL_ROOT_PASSWORD: root
-MYSQL_DATABASE: test
-MYSQL_USER: user
-MYSQL_PASSWORD: password
-Volume : dbdata pour persister les données de la base de données.
-Conteneur phpMyAdmin
-Image : phpmyadmin/phpmyadmin
-Port exposé : 8081
-Configuration :
-Hôte MySQL : mysql
-Mot de passe root : root
-Volumes
-dbdata : Stocke les données de MySQL de manière persistante.
-Arrêter les Conteneurs
-Pour arrêter les conteneurs, utilisez la commande suivante :
 
-docker-compose down
-Notes
+    ```bash
+    docker-compose build
+    ```
+
+4. Lancez les conteneurs avec la commande :
+
+    ```bash
+    docker-compose up
+    ```
+
+5. Une fois les conteneurs démarrés :
+
+   - Accédez au serveur PHP sur [port 8000](http://localhost:8000).
+   - Accédez à phpMyAdmin sur [port 8081](http://localhost:8081).
+  
+6. Arrêter les Conteneurs
+
+- Pour arrêter les conteneurs, utilisez la commande suivante :
+
+    ```bash
+    docker-compose build
+    ```
+
+## Configuration des Conteneurs
+
+### Conteneur PHP
+
+- Image : php:8.3-apache
+- Port exposé : 8000
+- Dossier synchronisé : ./php vers /var/www/html dans le conteneur.
+- Modules installés : mysqli, pdo, pdo_mysql.
+
+### Conteneur MySQL
+
+- **Image :** mysql:8.4.3
+- **Port exposé :** 3307
+- **Variables d'environnement :**
+  - MYSQL_ROOT_PASSWORD: root
+  - MYSQL_DATABASE: test
+  - MYSQL_USER: user
+  - MYSQL_PASSWORD: password
+- **Volume :** dbdata pour persister les données de la base de données.
+
+### Conteneur phpMyAdmin
+
+- **Image :** phpmyadmin/phpmyadmin
+- **Port exposé :** 8081
+- **Configuration :**
+  - Hôte MySQL : mysql
+  - Mot de passe root : root
+
+### Volumes
+
+- dbdata : Stocke les données de MySQL de manière persistante.
+
+### Notes
+
 Assurez-vous que les ports utilisés (8000, 8081, 3307) ne sont pas déjà occupés par d'autres services.
 Si vous souhaitez modifier la configuration (comme les mots de passe ou les ports), mettez à jour le fichier docker-compose.yml avant de démarrer les conteneurs.
-Auteur
-Configuration rédigée par un développeur passionné de Docker et de développement web. 🚀
 
+### Quelques points à retenir
 
-### Quelques points à retenir :
 - Si tu veux ajouter ou personnaliser un autre point, fais-le-moi savoir !
-- Si tu souhaites une section supplémentaire, comme des *FAQs* ou des *détails avancés*, je peux la rajouter facilement. 😊
+- Le projet à pour but de parfaire mes configurations et il se peut qu'il évoluera
